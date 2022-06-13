@@ -1,13 +1,14 @@
 import {useEffect, useState} from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
-
+import Card from './Card'
 import axios from 'axios'
 
 function Products() {
     const [brands, setbrands] = useState({})
     const [cat, setcat] = useState({})
     const [products, setproducts] = useState({})
+    const [filter, setFilter] = useState(products)
     const getData = ()=>{
         return new Promise(async (resolve, reject)=>{
             await axios.get('https://laravel.cvrunway.co.uk/api/iphones').then((response) => {
@@ -35,11 +36,12 @@ function Products() {
         <div className='container'>
             <div className="row py-5">
                 <div className="col-3 mb-5 bg-light filter">
-                    <Sidebar/>
+                    <Sidebar data={products} filter={filter} setFilter={setFilter} />
                 </div>
                 <div className="col-xs-12 col-md-9 col-lg-9 col-xl-9">
                     <div className="row">
-                        {products.length > 0 ? products.map(product => 
+                        
+                        {filter.length > 0 ? filter.map(product => 
                         <div className="col-6 col-md-4 col-lg-4 col-xl-4">
                             <div className="image-box" key={product.id}>
                                 <img width="198" className="iphone-image-width" src={`https://justmac.com/storage/images/${product.uploads}`} alt="" />
