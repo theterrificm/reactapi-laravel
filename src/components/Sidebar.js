@@ -18,12 +18,6 @@ function Sidebar({data, filter, setFilter}) {
                     <div className='bg-white filter-height filter mb-3 ps-2 py-3'>
                         <div class="form-group form-check">
 
-                            <input type="radio" value="MacBook" className="form-check-input" onClick={(e)=>{filterClick(e)}} name="macbook"  id="macbook" /> 
-
-                            <label className="form-check-label" for="macbook">Macbook</label>
-                        </div>
-                        <div class="form-group form-check">
-
                             <input type="radio" className="form-check-input" name="macbook" onClick={(e)=>{filterClick(e)}}  id="macbookpro" value="MacBook Pro" /> 
 
                             <label className="form-check-label" for="macbookpro">Macbook Pro</label>
@@ -33,6 +27,12 @@ function Sidebar({data, filter, setFilter}) {
                             <input value="MACBOOK AIR" type="radio" className="form-check-input" onClick={(e)=>{filterClick(e)}} name="macbook"  id="macbookair" /> 
 
                             <label className="form-check-label" for="macbookair">Macbook Air</label>
+                        </div>
+                        <div class="form-group form-check">
+
+                            <input type="radio" value="MacBook" className="form-check-input" onClick={()=>{setFilter(data)}} name="macbook"  id="macbooka" /> 
+
+                            <label className="form-check-label" for="macbooka">Macbook</label>
                         </div>
                     </div>
                     <div class="sem bg-white mb-3">

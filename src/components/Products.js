@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
-import Card from './Card'
+import Cards from './Card'
 import axios from 'axios'
 
 function Products() {
@@ -24,6 +24,7 @@ function Products() {
             setbrands(response.brands)
             setcat(response.categories)
             setproducts(response.product)
+            setFilter(response.product)
             
         })
 
@@ -40,10 +41,10 @@ function Products() {
                 </div>
                 <div className="col-xs-12 col-md-9 col-lg-9 col-xl-9">
                     <div className="row">
-                        
                         {filter.length > 0 ? filter.map(product => 
-                        <div className="col-6 col-md-4 col-lg-4 col-xl-4">
-                            <div className="image-box" key={product.id}>
+                        <div className="col-6 col-md-4 col-lg-4 col-xl-4 py-3">
+                            <Cards  brand={brands[product.brand_id -1].name} price={product.fair} title={product.title} text={product.category_id.map(cats => cat[cats -1].name + ', ')} image={`https://justmac.com/storage/images/${product.uploads}`}/>
+                            {/* <div className="image-box" key={product.id}>
                                 <img width="198" className="iphone-image-width" src={`https://justmac.com/storage/images/${product.uploads}`} alt="" />
                             </div>
                             <div className="mt-3 ms-1 product-bar">
@@ -57,7 +58,7 @@ function Products() {
                             </div>
                             <div className='d-inline-flex ai ms-1'>
                                 <small>Starting from &nbsp;</small> <p className="product-price"> <b>$  {product.fair}</b></p> 
-                            </div>
+                            </div> */}
                         </div>) : null}        
                         
                     </div>
